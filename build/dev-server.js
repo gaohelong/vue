@@ -1,74 +1,83 @@
-require('./check-versions')()
-var config = require('../config')
-if (!process.env.NODE_ENV) process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
-var path = require('path')
-var express = require('express')
-var webpack = require('webpack')
-var opn = require('opn')
-var proxyMiddleware = require('http-proxy-middleware')
-var webpackConfig = process.env.NODE_ENV === 'testing'
-  ? require('./webpack.prod.conf')
-  : require('./webpack.dev.conf')
+require('./check-versions')();
+var config = require('../config');
+if (!process.env.NODE_ENV) {
+    process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV);
+}
+var path = require('path');
+var express = require('express');
+var webpack = require('webpack');
+var opn = require('opn');
+var proxyMiddleware = require('http-proxy-middleware');
+var webpackConfig = process.env.NODE_ENV === 'testing' ? require('./webpack.prod.conf') : require('./webpack.dev.conf');
 
 // default port where dev server listens for incoming traffic
-var port = process.env.PORT || config.dev.port
+var port = process.env.PORT || config.dev.port;
+
 // Define HTTP proxies to your custom API backend
 // https://github.com/chimurai/http-proxy-middleware
-var proxyTable = config.dev.proxyTable
+var proxyTable = config.dev.proxyTable;
 
-var app = express()
-var compiler = webpack(webpackConfig)
+//创建一个express实例.
+var app = express();
 
+//调用webpack并把配置传递过去.
+var compiler = webpack(webpackConfig);
+
+//使用 webpack-dev-middleware 中间件，搭建服务器.
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
-  publicPath: webpackConfig.output.publicPath,
-  stats: {
-    colors: true,
-    chunks: false
-  }
+    publicPath: webpackConfig.output.publicPath,
+    stats: {
+        colors: true,
+        chunks: false
+    }
 })
 
-var hotMiddleware = require('webpack-hot-middleware')(compiler)
+//使用 webpack-hot-middleware 中间件，实现热加载.
+var hotMiddleware = require('webpack-hot-middleware')(compiler);
+
 // force page reload when html-webpack-plugin template changes
 compiler.plugin('compilation', function (compilation) {
-  compilation.plugin('html-webpack-plugin-after-emit', function (data, cb) {
-    hotMiddleware.publish({ action: 'reload' })
-    cb()
-  })
+    compilation.plugin('html-webpack-plugin-after-emit', function (data, cb) {
+        hotMiddleware.publish({ action: 'reload' });
+        cb();
+    })
 })
 
 // proxy api requests
 Object.keys(proxyTable).forEach(function (context) {
-  var options = proxyTable[context]
-  if (typeof options === 'string') {
-    options = { target: options }
-  }
-  app.use(proxyMiddleware(context, options))
+    var options = proxyTable[context];
+    if (typeof options === 'string') {
+        options = { target: options };
+    }
+    app.use(proxyMiddleware(context, options));
 })
 
 // handle fallback for HTML5 history API
-app.use(require('connect-history-api-fallback')())
+app.use(require('connect-history-api-fallback')());
 
 // serve webpack bundle output
-app.use(devMiddleware)
+app.use(devMiddleware);
 
 // enable hot-reload and state-preserving
 // compilation error display
-app.use(hotMiddleware)
+app.use(hotMiddleware);
 
 // serve pure static assets
-var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
-app.use(staticPath, express.static('./static'))
+var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory);
+app.use(staticPath, express.static('./static'));
 
+//监听port所设置的端口，开启服务器.
 module.exports = app.listen(port, function (err) {
-  if (err) {
-    console.log(err)
-    return
-  }
-  var uri = 'http://localhost:' + port
-  console.log('Listening at ' + uri + '\n')
+    if (err) {
+        console.log(err);
+        return ;
+    }
 
-  // when env is testing, don't need open it
-  if (process.env.NODE_ENV !== 'testing') {
-    opn(uri)
-  }
+    var uri = 'http://localhost:' + port;
+    console.log('Listening at ' + uri + '\n');
+
+    // when env is testing, don't need open it
+    if (process.env.NODE_ENV !== 'testing') {
+        opn(uri);
+    }
 })
