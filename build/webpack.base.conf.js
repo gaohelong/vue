@@ -15,7 +15,7 @@ var useCssSourceMap = cssSourceMapDev || cssSourceMapProd;
 module.exports = {
     //入口文件配置.
     entry: {
-        app: './src/main.js'
+        app: './src/index.js'
     },
     //输出配置
     output: {

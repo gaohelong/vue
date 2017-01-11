@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <img src="../assets/img/logo.png">
+    <img src="./assets/img/logo.png">
     <index></index>
   </div>
 </template>
 
 <script>
-  import Index from './index/index'
+  import Index from './components/index/index'
   
   export default {
     name: 'app',

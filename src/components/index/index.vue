@@ -7,7 +7,7 @@
       <li><a href="/img" target="_self">图片</a></li>
       <li><a href="/report" target="_self">报表</a></li>
       <li><a href="/domain" target="_self">域名</a></li>
-      <br>
+      <br> 
       <li><a href="javascript:void(0);" target="_self">bigdata</a></li>
     </ul>
   </div>
