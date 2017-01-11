@@ -8,6 +8,7 @@
   import Login from './login/index'
 
   export default {
+    name: 'login-container',
     components: {
       Login
     }

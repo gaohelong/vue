@@ -20,11 +20,46 @@
     <div class="login-success">
       <img src="../../assets/img/login/success.png" >
     </div>
+    <div class="example-list">
+      <!-- 使用 router-link 组件来导航. -->
+      <!-- 通过传入 `to` 属性指定链接. -->
+      <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+      <router-link to="/list">列表实例</router-link>
+    </div>
   </div>
 </template>
 
 <script>
+  export default {
+    name: 'login'
+    // mounted () {
+    //   setTimeout(() => {
+    //     this.$router.push({
+    //       name: 'list'
+    //     })
+    //   }, 2000)
+    // }
+  }
 </script>
 
-<style> 
+<style>
+  @import '../../assets/css/global/bootstrap.min.css';
+  @import '../../assets/css/global/main.css';
+  @import '../../assets/css/modules/login/login.css';
+      
+  .example-list {
+    position: relative;
+    z-index: 2;
+    line-height: 40px;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .example-list a {
+    width: 10%;
+    text-align: center;
+    display: block;
+    font-size: 12px;
+  }
 </style>
