@@ -31,36 +31,36 @@
 </template>
 
 <script>
-  export default {
-    name: 'login'
-    // mounted () {
-    //   setTimeout(() => {
-    //     this.$router.push({
-    //       name: 'list'
-    //     })
-    //   }, 2000)
-    // }
-  }
+    export default {
+        name: 'login'
+        // mounted () {
+        //     setTimeout(() => {
+        //         this.$router.push({
+        //             name: 'list'
+        //         });
+        //     }, 2000);
+        // }
+    };
 </script>
 
 <style>
-  @import '../../assets/css/global/bootstrap.min.css';
-  @import '../../assets/css/global/main.css';
-  @import '../../assets/css/modules/login/login.css';
-      
-  .example-list {
-    position: relative;
-    z-index: 2;
-    line-height: 40px;
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
-  }
+    @import '../../assets/css/global/bootstrap.min.css';
+    @import '../../assets/css/global/main.css';
+    @import '../../assets/css/modules/login/login.css';
+        
+    .example-list {
+        position: relative;
+        z-index: 2;
+        line-height: 40px;
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
 
-  .example-list a {
-    width: 10%;
-    text-align: center;
-    display: block;
-    font-size: 12px;
-  }
+    .example-list a {
+        width: 10%;
+        text-align: center;
+        display: block;
+        font-size: 12px;
+    }
 </style>
