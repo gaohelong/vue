@@ -30,6 +30,8 @@ const router = new VueRouter({
   routes
 })
 
+console.log(1)
+
 // 创建和挂载根实例.
 new Vue({
   router,

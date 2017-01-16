@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="test-container">
       我是list
     </div>
 </template> 

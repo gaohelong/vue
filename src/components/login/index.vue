@@ -24,7 +24,8 @@
       <!-- 使用 router-link 组件来导航. -->
       <!-- 通过传入 `to` 属性指定链接. -->
       <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
-      <router-link to="/list">列表实例</router-link>
+      <router-link :class="'f-l'" to="/basicInstance">基础实例</router-link>
+      <router-link :class="'f-l'" to="/list">列表实例</router-link>
     </div>
   </div>
 </template>

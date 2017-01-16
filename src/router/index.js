@@ -22,6 +22,16 @@ const routers = [
     }
   },
   {
+    path: '/basicInstance',
+    name: 'base',
+    // 路由懒加载.
+    component (resolve) {
+      require.ensure(['../views/modules/test/base.vue'], () => {
+        resolve(require('../views/modules/test/base.vue'))
+      })
+    }
+  },
+  {
     path: '*',
     component: Login
   }
