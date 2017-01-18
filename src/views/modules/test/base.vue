@@ -38,12 +38,6 @@
                style放在一个对象中.
             </div>
         </div>
-
-        <!-- event -->
-
-        <!-- computed -->
-
-        <!-- methods -->
     </div>
 </template>
 

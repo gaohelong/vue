@@ -32,6 +32,16 @@ const routers = [
         }
     },
     {
+        path: '/event',
+        name: 'event',
+        // 路由懒加载.
+        component(resolve) {
+            require.ensure(['../views/modules/test/event.vue'], () => {
+                resolve(require('../views/modules/test/event.vue'));
+            });
+        }
+    },
+    {
         path: '*',
         component: Login
     }
