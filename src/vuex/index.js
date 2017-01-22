@@ -1,16 +1,53 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import User from './user';
+// import Base from './base';
+// import User from './user';
+// import Event from './event';
 Vue.use(Vuex);
 
-const store = new Vuex.Store({
+const base = {
     state: {
-        pageTitle: '',
-        userInfo: User,
+        pageTitle: ''
+    },
+    getters: {
+
+    },
+    mutations: {
+
+    },
+    actions: {
+
+    }
+};
+
+const event = {
+    state: {
         mouseInfo: {
             meS1Text: '我是mouseenter、mouseleave.'
-        },
-        list: []
+        }
+    },
+    getters: {
+
+    },
+    mutations: {
+        setMouseS1(state, params) {
+            state.mouseInfo.meS1Text = params.text;
+        }
+    },
+    actions: {
+        setMouseS1({commit}, params) {
+            commit('setMouseS1', params);
+        }
+    }
+};
+
+const user = {
+    state: {
+        userInfo: {
+            id: 1,
+            name: '张三',
+            age: '28'
+        }
     },
     getters: {
         getUserInfo(state) {
@@ -20,9 +57,6 @@ const store = new Vuex.Store({
     mutations: {
         setUserInfo(state, userInfo) {
             state.userInfo = userInfo;
-        },
-        setMouseS1(state, params) {
-            state.mouseInfo.meS1Text = params.text;
         },
         setAge(state, params) {
             state.userInfo.age = params.age;
@@ -35,15 +69,20 @@ const store = new Vuex.Store({
         setUserInfo({ commit }, user) {
             commit('setUserInfo', user);
         },
-        setMouseS1({commit}, params) {
-            commit('setMouseS1', params);
-        },
         setAge({commit}, params) {
             commit('setAge', params);
         },
         setName({commit}, params) {
             commit('setName', params);
         }
+    }
+};
+
+const store = new Vuex.Store({
+    modules: {
+        base: base,
+        user: user,
+        event: event
     }
 });
 

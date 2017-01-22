@@ -86,8 +86,8 @@
             userInfo() {
                 return {
                     // this.$store调用从根节点注入的store.
-                    'name': this.$store.state.userInfo.name,
-                    'age': this.$store.state.userInfo.age
+                    'name': this.$store.state.user.userInfo.name,
+                    'age': this.$store.state.user.userInfo.age
                 };
             }
         },
@@ -96,6 +96,7 @@
             /* ------ */
             ageChanage() {
                 this.$store.dispatch('setUserInfo', {
+                    'id': 1,
                     'age': 100,
                     'name': '李四'
                 });

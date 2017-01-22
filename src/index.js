@@ -32,7 +32,7 @@ router.beforeEach((to, from, next) => {
 
         // this route requires auth, check if logged in
         // if not, redirect to login page.
-        if (!store.state.userInfo.id) {
+        if (!store.state.user.userInfo.id) {
             next({
                 path: '/login',
                 query: {redirect: to.fullPath}

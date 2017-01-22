@@ -72,7 +72,7 @@
         <!-- 鼠标事件 -->
         <div class="example-partition">
             <div :class="'l-h-28'" @mouseenter="mouseenterS1('enter')" @mouseleave="mouseenterS1('leave')">
-                {{this.$store.state.mouseInfo.meS1Text}}
+                {{this.$store.state.event.mouseInfo.meS1Text}}
             </div>
 
             <div :class="'l-h-28'" @mouseenter="mouseenterS2('enter')" @mouseleave="mouseenterS2('leave')">
