@@ -91,6 +91,9 @@
         },
         updated() {
             console.log('event-局部更新完成.');
+
+            // 页面重载后赋默认值.
+            this.mouseenterS1();
         },
         beforeMount() {
             console.log('event-局部安装之前.');
@@ -110,7 +113,8 @@
                     btn: true,
                     'btn-danger': true
                 },
-                counter: 0
+                counter: 0,
+                meS1TextDefault: this.$store.state.mouseInfo.meS1Text
             };
         },
         computed: {
@@ -165,9 +169,11 @@
             /* mouse */
             mouseenterS1(type) {
                 let obj = {};
+                obj.text = this.meS1TextDefault; // 默认值.
+
                 if (type === 'enter') {
                     obj.text = '0_0->mouseenter';
-                } else {
+                } else if (type === 'leave') {
                     obj.text = '0_0->mouseleave';
                 }
 
