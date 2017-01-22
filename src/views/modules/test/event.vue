@@ -80,6 +80,30 @@
 
 <script>
     export default {
+        beforeCreate() {
+            console.log('event-局部创建之前.');
+        },
+        created() {
+            console.log('event-局部创建完成.');
+        },
+        beforeUpdate() {
+            console.log('event-局部更新之前.');
+        },
+        updated() {
+            console.log('event-局部更新完成.');
+        },
+        beforeMount() {
+            console.log('event-局部安装之前.');
+        },
+        mounted() {
+            console.log('event-局部安装完成.');
+        },
+        beforeDestroy() {
+            console.log('event-局部释放之前.');
+        },
+        destroyed() {
+            console.log('event-局部释放之后.');
+        },
         data() {
             return {
                 btnCls: {

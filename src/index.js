@@ -26,10 +26,37 @@ Vue.config.keyCodes = {
 /* 创建和挂载根实例 */
 new Vue({
     router,
-    store
+    store,
     // el: '#login',
     // template: '<Login/>',
     // components: {
     //     Login
     // }
+    beforeCreate() {
+        console.log('main-创建完成前.');
+    },
+    created() {
+        console.log('main-创建完成.');
+    },
+    beforeMount() {
+        console.log('main-安装之前.');
+    },
+    mounted() {
+        console.log('main-安装完成.');
+    },
+
+    /* 频繁调用 */
+    beforeUpdate() {
+        console.log('main-更新之前.');
+    },
+    updated() {
+        console.log('main-更新完成.');
+    },
+
+    beforeDestroy() {
+        console.log('main-释放之前.');
+    },
+    destroyed() {
+        console.log('main-释放完成.');
+    }
 }).$mount('#login');
