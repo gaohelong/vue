@@ -18,6 +18,11 @@ const router = new VueRouter({
     routes
 });
 
+/* keyCode Config */
+Vue.config.keyCodes = {
+    p: 112
+};
+
 /* 创建和挂载根实例 */
 new Vue({
     router,
