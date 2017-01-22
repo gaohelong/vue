@@ -6,6 +6,9 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
     state: {
         userInfo: User,
+        mouseInfo: {
+            meS1Text: '我是mouseenter、mouseleave.'
+        },
         list: []
     },
     getters: {
@@ -17,6 +20,9 @@ const store = new Vuex.Store({
         setUserInfo(state, userInfo) {
             state.userInfo = userInfo;
         },
+        setMouseS1(state, params) {
+            state.mouseInfo.meS1Text = params.text;
+        },
         setAge(state, params) {
             state.userInfo.age = params.age;
         },
@@ -27,6 +33,9 @@ const store = new Vuex.Store({
     actions: {
         setUserInfo({ commit }, user) {
             commit('setUserInfo', user);
+        },
+        setMouseS1({commit}, params) {
+            commit('setMouseS1', params);
         },
         setAge({commit}, params) {
             commit('setAge', params);

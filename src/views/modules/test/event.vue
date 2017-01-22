@@ -53,10 +53,10 @@
             <!-- vue自带的按键别名：.enter、.tab、.delete (捕获 “删除” 和 “退格” 键)、.esc、.space、.up、.down、.left、.right -->
 
             <!-- 只有在 keyCode 是 13 时调用绑定的方法 -->
-            <input :class="'form-control'" v-on:keyup.13="keyupEnterProc">
+            <input :class="'form-control f-c-0'" v-on:keyup.13="keyupEnterProc">
             
             <!-- 同上，下面只是做了映射 -->
-            <input :class="'form-control' "@keyup.enter="keyupEnterProc1">
+            <input :class="'form-control f-c-0' "@keyup.enter="keyupEnterProc1">
 
 
 
@@ -67,6 +67,13 @@
 
             <!-- Ctrl + Click -->
             <div :class="'l-h-28'" @click.ctrl="warn('kao')">Ctrl + 鼠标左键Click</div>
+        </div>
+
+        <!-- 鼠标事件 -->
+        <div class="example-partition">
+            <div :class="'l-h-28'" @mouseenter="mouseenterS1('enter')" @mouseleave="mouseenterS1('leave')">
+                {{meS1Text}}
+            </div>
         </div>
     </div>
 </template>
@@ -83,7 +90,9 @@
             };
         },
         computed: {
-            /* click */
+            meS1Text() {
+                return this.$store.state.mouseInfo.meS1Text;
+            }
         },
         methods: {
             /* click */
@@ -127,6 +136,18 @@
             },
             warn(str) {
                 console.log(str);
+            },
+
+            /* mouse */
+            mouseenterS1(type) {
+                let obj = {};
+                if (type === 'enter') {
+                    obj.text = '0_0->mouseenter';
+                } else {
+                    obj.text = '0_0->mouseleave';
+                }
+
+                this.$store.dispatch('setMouseS1', obj);
             }
         }
     };
