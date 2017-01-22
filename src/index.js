@@ -18,6 +18,33 @@ const router = new VueRouter({
     routes
 });
 
+/* router beforeEach */
+router.beforeEach((to, from, next) => {
+    // 改变页面title.
+    to.matched.some(record => {
+        document.title = record.meta.pageTitle;
+        return record.meta.pageTile;
+    });
+
+    // 登录验证.
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+        // 异步请求验证登录状态，然后在进行后续操作.
+
+        // this route requires auth, check if logged in
+        // if not, redirect to login page.
+        if (!store.state.userInfo.id) {
+            next({
+                path: '/login',
+                query: {redirect: to.fullPath}
+            });
+        } else {
+            next();
+        }
+    } else {
+        next(); // 确保一定要调用 next()
+    }
+});
+
 /* keyCode Config */
 Vue.config.keyCodes = {
     p: 112

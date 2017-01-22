@@ -5,6 +5,7 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
     state: {
+        pageTitle: '',
         userInfo: User,
         mouseInfo: {
             meS1Text: '我是mouseenter、mouseleave.'

@@ -76,7 +76,7 @@
             </div>
 
             <div :class="'l-h-28'" @mouseenter="mouseenterS2('enter')" @mouseleave="mouseenterS2('leave')">
-                {{this.meS1Text}}
+                {{meS1Text}}
             </div>
         </div>
     </div>
