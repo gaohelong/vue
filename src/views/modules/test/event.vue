@@ -72,7 +72,11 @@
         <!-- 鼠标事件 -->
         <div class="example-partition">
             <div :class="'l-h-28'" @mouseenter="mouseenterS1('enter')" @mouseleave="mouseenterS1('leave')">
-                {{meS1Text}}
+                {{this.$store.state.mouseInfo.meS1Text}}
+            </div>
+
+            <div :class="'l-h-28'" @mouseenter="mouseenterS2('enter')" @mouseleave="mouseenterS2('leave')">
+                {{this.meS1Text}}
             </div>
         </div>
     </div>
@@ -91,9 +95,6 @@
         },
         updated() {
             console.log('event-局部更新完成.');
-
-            // 页面重载后赋默认值.
-            this.mouseenterS1();
         },
         beforeMount() {
             console.log('event-局部安装之前.');
@@ -114,13 +115,10 @@
                     'btn-danger': true
                 },
                 counter: 0,
-                meS1TextDefault: this.$store.state.mouseInfo.meS1Text
+                meS1Text: '我没使用vuex，我是本地的'
             };
         },
         computed: {
-            meS1Text() {
-                return this.$store.state.mouseInfo.meS1Text;
-            }
         },
         methods: {
             /* click */
@@ -169,8 +167,6 @@
             /* mouse */
             mouseenterS1(type) {
                 let obj = {};
-                obj.text = this.meS1TextDefault; // 默认值.
-
                 if (type === 'enter') {
                     obj.text = '0_0->mouseenter';
                 } else if (type === 'leave') {
@@ -178,6 +174,13 @@
                 }
 
                 this.$store.dispatch('setMouseS1', obj);
+            },
+            mouseenterS2(type) {
+                if (type === 'enter') {
+                    this.meS1Text = 'local->mouseenter';
+                } else if (type === 'leave') {
+                    this.meS1Text = 'local->mouseleave';
+                }
             }
         }
     };
