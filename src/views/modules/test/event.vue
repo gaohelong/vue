@@ -118,8 +118,10 @@
                 meS1Text: '我没使用vuex，我是本地的'
             };
         },
+        /* 计算属性 */
         computed: {
         },
+        /* 处理方法 */
         methods: {
             /* click */
             noParamsClick(event) {
@@ -187,5 +189,15 @@
 </script>
 
 <style lang="less">
-    @import '../../../assets/css/modules/event/event.css';
+    @import '../../../assets/css/modules/event/event.less';
+
+    /* less */
+    @color: #4D926F;
+    #header {
+        color: @color;
+    }
+
+    h2 {
+        color: @color;
+    }
 </style>
