@@ -24,6 +24,7 @@
             <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
             <router-link :class="'f-l'" to="/basicInstance">基础实例</router-link>
             <router-link :class="'f-l'" to="/event">事件</router-link>
+            <router-link :class="'f-l'" to="/filter">过滤器</router-link>
             <router-link :class="'f-l'" to="/list">列表实例</router-link>
         </div>
     </div>

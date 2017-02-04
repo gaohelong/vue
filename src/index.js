@@ -54,6 +54,7 @@ Vue.config.keyCodes = {
 new Vue({
     router,
     store,
+    filters,
     // el: '#login',
     // template: '<Login/>',
     // components: {

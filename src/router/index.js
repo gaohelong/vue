@@ -57,6 +57,20 @@ const routers = [
         }
     },
     {
+        path: '/filter',
+        name: 'filter',
+        meta: {
+            pageTitle: '过滤器',
+            requiresAuth: true
+        },
+        // 路由懒加载.
+        component(resolve) {
+            require.ensure(['../views/modules/test/filter.vue'], () => {
+                resolve(require('../views/modules/test/filter.vue'));
+            });
+        }
+    },
+    {
         path: '*',
         meta: {
             pageTitle: '登录页'
